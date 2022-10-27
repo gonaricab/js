@@ -1,34 +1,37 @@
 function funcion (variable1,variable2) {
-    let x = variable1 * variable2
-    alert ("El total de tu compra es: " + x)
-}
-let eleccion = parseInt (prompt("Selecciona un producto: 1-iphone ($500) 2-PC($1000) 3-tablet($800)\nPresiona cualquier otra letra para salir"))
-let producto 
-let decision = true
-while (decision = true){
-    if (eleccion === 1) {
-        producto = 500
-        let cantidad = parseInt (prompt ("Indica la cantidad del producto:"))
-        funcion (producto, cantidad)
-        break
-    }
-    else if (eleccion === 2) {
-        producto = 1000
-        let cantidad = parseInt (prompt ("Indica la cantidad del producto:"))
-        funcion (producto, cantidad)
-        break
-    }
-    else if (eleccion === 3) {
-        producto = 800
-        let cantidad = parseInt (prompt ("Indica la cantidad del producto:"))
-        funcion (producto, cantidad)
-        break
-    }
-    else {
-        alert ("Saliste!")
-        decision = false
-        break
-    }
+    let x = variable1 * variable2  
+    alert (x)
 }
 
+let producto = parseInt(prompt ("1. Iphone - 2. TV - 3. Ipad - 4. PC"));
+let seguirComprando = true
+let decision
+while (seguirComprando === true) {
+    if (producto === 1) {
+        let cantidad = parseInt(prompt("Indica cantidad:")) 
+        funcion (500, cantidad)
+    }
+    else if (producto === 2) {
+        let cantidad = parseInt(prompt("Indica cantidad:"))
+        funcion (300,cantidad)
+    }
+    else if (producto === 3) {
+        let cantidad = parseInt(prompt("Indica cantidad:"))
+        funcion (800,cantidad)
+    }
+    else if (producto === 4) {
+        let cantidad = parseInt(prompt("Indica cantidad:"))
+        funcion (1000,cantidad)
+    }
+    else {
+        producto = parseInt(prompt ("Producto habilitado: 1. Iphone - 2. TV - 3. Ipad - 4. PC"))
+    }
+    decision = parseInt (prompt ("Deseas seguir comprando? 1-Sí 2-No"))
+    if (decision === 1){
+        producto = parseInt(prompt ("1. Iphone - 2. TV - 3. Ipad - 4. PC"));
+    }
+    else {
+        seguirComprando = false
+    }
+}
 
