@@ -25,14 +25,12 @@ productosExistentes.push (ipad)
 const pc = new Producto (4, "pc", 1000)
 productosExistentes.push (pc)
 
-
-const productoCliente = productosExistentes.find (producto => producto.id === productoSeleccionado)
-
-
 while (seguirComprando === true) {
+    const productoCliente = productosExistentes.find (producto => producto.id === productoSeleccionado)
     if(productoCliente) {
         let cantidad = parseInt(prompt("Indica cantidad:")) 
         funcion (productoCliente.precio, cantidad)
+       
     }
     else {
         productoSeleccionado = parseInt(prompt ("Productos habilitados: 1. Iphone - 2. TV - 3. Ipad - 4. PC"))
