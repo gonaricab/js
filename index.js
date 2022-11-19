@@ -3,7 +3,7 @@ function funcion (variable1,variable2) {
     
 }
 
-let productoSeleccionado = parseInt(prompt ("1. Iphone - 2. TV - 3. Ipad - 4. PC"));
+let productoSeleccionado = parseInt(prompt ("1. Iphone - 2. TV - 3. Ipad - 4. PC - 5. Salir"));
 let seguirComprando = true
 let decision
 const productosExistentes = []
@@ -28,6 +28,9 @@ productosExistentes.push (pc)
 while (seguirComprando === true) {
     const productoCliente = productosExistentes.find (producto => producto.id === productoSeleccionado)
     console.log (productoCliente)
+    if (productoSeleccionado === 5) {
+        break
+    }
     if(productoCliente) {
         let cantidad = parseInt(prompt("Indica cantidad:")) 
         let x = funcion (productoCliente.precio, cantidad)
@@ -51,7 +54,7 @@ while (seguirComprando === true) {
     }
     decision = parseInt (prompt ("Deseas seguir comprando? 1-Sí 2-No"))
     if (decision === 1){
-        productoSeleccionado = parseInt(prompt ("1. Iphone - 2. TV - 3. Ipad - 4. PC"));
+        productoSeleccionado = parseInt(prompt ("1. Iphone - 2. TV - 3. Ipad - 4. PC - 5. Salir"));
     }
     else {
         seguirComprando = false
