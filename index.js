@@ -1,13 +1,3 @@
-function funcion (variable1,variable2) {
-    let x = variable1 * variable2  
-    alert ("Valor de la compra " + x)
-}
-
-let productoSeleccionado = parseInt(prompt ("1. Iphone - 2. TV - 3. Ipad - 4. PC"));
-let seguirComprando = true
-let decision
-const productosExistentes = []
-
 class Producto {
     constructor (id, producto, precio) {
         this.id = id
@@ -15,39 +5,30 @@ class Producto {
         this.precio = precio
     }
 }
+const iphone = new Producto (0, "iphone", 500)
 
-const iphone = new Producto (1, "iphone", 500)
-productosExistentes.push (iphone)
-const tv = new Producto (2, "tv", 300)
-productosExistentes.push (tv)
-const ipad = new Producto (3, "ipad", 800)
-productosExistentes.push (ipad)
-const pc = new Producto (4, "pc", 1000)
-productosExistentes.push (pc)
+const tv = new Producto (1, "tv", 300)
 
-while (seguirComprando === true) {
-    const productoCliente = productosExistentes.find (producto => producto.id === productoSeleccionado)
-    if(productoCliente) {
-        let cantidad = parseInt(prompt("Indica cantidad:")) 
-        funcion (productoCliente.precio, cantidad)
-       
-    }
-    else {
-        productoSeleccionado = parseInt(prompt ("Productos habilitados: 1. Iphone - 2. TV - 3. Ipad - 4. PC"))
+const ipad = new Producto (2, "ipad", 800)
 
-    }
-    decision = parseInt (prompt ("Deseas seguir comprando? 1-Sí 2-No"))
-    if (decision === 1){
-        productoSeleccionado = parseInt(prompt ("1. Iphone - 2. TV - 3. Ipad - 4. PC"));
-    }
-    else {
-        seguirComprando = false
-    }
+const pc = new Producto (3, "pc", 1000)
 
+const productos = [iphone,tv,ipad,pc]
+
+const carrito = []
+
+const selectProds = document.getElementById("select")
+const botonAgregar = document.getElementById("agregar")
+
+productos.forEach((producto)=> {
+  const optionProd = document.createElement("option")
+  optionProd.innerText = `${producto.producto}: ${producto.precio}`
+  selectProds.append(optionProd)
+})
+
+botonAgregar.onclick = () => {
+  const indexProducto = selectProds.selectedIndex
+  const productoSeleccionado = productos[indexProducto]
+  carrito.push (productoSeleccionado)
+  console.log(carrito)
 }
-
-   
-
-
- 
-  
