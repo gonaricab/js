@@ -1,0 +1,10 @@
+.header {
+    background-color: yellow;
+    display: flex;
+    justify-content: center;
+}
+
+.carrito {
+    display: flex;
+    justify-content: center;
+}

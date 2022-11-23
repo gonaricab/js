@@ -17,8 +17,13 @@ const productos = [iphone,tv,ipad,pc]
 
 const carrito = []
 
+let precioTotal = 0
+
 const selectProds = document.getElementById("select")
 const botonAgregar = document.getElementById("agregar")
+const botonComprar = document.getElementById("comprar")
+const divProductos = document.getElementById("divProductos")
+const contenidoCarrito = document.getElementById("contenidoCarrito")
 
 productos.forEach((producto)=> {
   const optionProd = document.createElement("option")
@@ -29,6 +34,23 @@ productos.forEach((producto)=> {
 botonAgregar.onclick = () => {
   const indexProducto = selectProds.selectedIndex
   const productoSeleccionado = productos[indexProducto]
-  carrito.push (productoSeleccionado)
-  console.log(carrito)
+  carrito.push(productoSeleccionado)
+  localStorage.setItem("carrito", JSON.stringify(carrito))
+  const carrito = JSON.parse(localStorage.getItem("carrito"))
+
 }
+
+botonComprar.onclick = () => {
+  const carritoValor = JSON.parse(localStorage.getItem("carrito"))
+  carritoValor.forEach((element) => {
+   precioTotal = precioTotal + element.precio
+   
+  })
+  alert (precioTotal)
+  console.log(carritoValor)
+}
+
+
+
+
+
