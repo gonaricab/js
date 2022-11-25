@@ -1,3 +1,11 @@
+const nombre = document.getElementById("inputNombre")
+const apellido = document.getElementById("inputApellido")
+const boton = document.getElementById("boton")
+const loguin = document.getElementById("loguin")
+const bienvenido = document.getElementById("bienvenido")
+const divDos = document.getElementById("divDos")
+
+const carrito = []
 class Producto {
     constructor (id, producto, precio) {
         this.id = id
@@ -15,40 +23,53 @@ const pc = new Producto (3, "pc", 1000)
 
 const productos = [iphone,tv,ipad,pc]
 
-const carrito = []
-
 let precioTotal = 0
 
-const selectProds = document.getElementById("select")
+boton.onclick = () => {
+    const datos =  {
+        nombre: nombre.value,
+        apellido: apellido.value
+    }
+    localStorage.setItem("datos", JSON.stringify(datos))
+    loguin.remove()
+    const saludo = document.createElement ("h2")
+    saludo.innerText = `Bienvenido ${datos.nombre} ${datos.apellido}`
+    bienvenido.append(saludo)
+    
+}
+
+divDos.innerHTML = `<select id="select"></select>
+    <button id="agregar">Agregar al Carrito</button>
+    <button id="comprar">Comprar</button>`
+productos.forEach((producto)=>{
+    const optionProd = document.createElement("option")
+    optionProd.innerText = `${producto.producto}${producto.precio}`
+    select.append(optionProd)
+}
+)
 const botonAgregar = document.getElementById("agregar")
+const selectProds = document.getElementById("select")
 const botonComprar = document.getElementById("comprar")
-const divProductos = document.getElementById("divProductos")
-const contenidoCarrito = document.getElementById("contenidoCarrito")
-
-productos.forEach((producto)=> {
-  const optionProd = document.createElement("option")
-  optionProd.innerText = `${producto.producto}: ${producto.precio}`
-  selectProds.append(optionProd)
-})
-
 botonAgregar.onclick = () => {
-  const indexProducto = selectProds.selectedIndex
-  const productoSeleccionado = productos[indexProducto]
-  carrito.push(productoSeleccionado)
-  localStorage.setItem("carrito", JSON.stringify(carrito))
-  const carrito = JSON.parse(localStorage.getItem("carrito"))
-
+    const indexProducto = selectProds.selectedIndex
+    const productoSeleccionado = productos[indexProducto]
+    carrito.push(productoSeleccionado)
+    console.log(carrito)
+    localStorage.setItem("carrito",JSON.stringify(carrito))
 }
 
 botonComprar.onclick = () => {
-  const carritoValor = JSON.parse(localStorage.getItem("carrito"))
-  carritoValor.forEach((element) => {
-   precioTotal = precioTotal + element.precio
-   
-  })
-  alert (precioTotal)
-  console.log(carritoValor)
+    const carritoValor = JSON.parse(localStorage.getItem("carrito"))
+    carritoValor.forEach((element) => {
+    precioTotal = precioTotal + element.precio  
+    })
+    alert (precioTotal)
+    console.log(carritoValor)
 }
+
+
+
+
 
 
 
