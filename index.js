@@ -6,7 +6,7 @@ const bienvenido = document.getElementById("bienvenido")
 const divDos = document.getElementById("divDos")
 const divTres = document.getElementById("divTres")
 const enCarrito = document.getElementById("enCarrito")
-const carrito = []
+let carrito = []
 class Producto {
     constructor (id, producto, precio) {
         this.id = id
@@ -41,7 +41,8 @@ boton.onclick = () => {
 
 divDos.innerHTML = `<select id="select"></select>
     <button id="agregar">Agregar al Carrito</button>
-    <button id="comprar">Comprar</button>`
+    <button id="comprar">Comprar</button>
+    <button id="vaciar">Vaciar Carrito</button>`
 productos.forEach((producto)=>{
     const optionProd = document.createElement("option")
     optionProd.innerText = `${producto.producto}${producto.precio}`
@@ -51,6 +52,7 @@ productos.forEach((producto)=>{
 const botonAgregar = document.getElementById("agregar")
 const selectProds = document.getElementById("select")
 const botonComprar = document.getElementById("comprar")
+const vaciarCarrito = document.getElementById("vaciar")
 const ul = document.getElementById("ul")
 
 botonAgregar.onclick = () => {
@@ -65,7 +67,14 @@ botonAgregar.onclick = () => {
     ul.append(listItem)
     
 }
-
+vaciarCarrito.onclick = () => {
+    x = JSON.parse(localStorage.getItem("carrito"))
+    if (x) {
+        localStorage.removeItem("carrito")
+        carrito = []
+        document.getElementById("ul").innerHTML = ""
+    }
+}
 
 botonComprar.onclick = () => {
   const carritoValor = JSON.parse(localStorage.getItem("carrito"))
@@ -81,7 +90,6 @@ botonComprar.onclick = () => {
     botonComprar.remove()
     divDos.innerHTML = `<h2>Compra Final:</h2>
     <p>Total: ${precioTotal} dólares</p`
-    
 }
 localStorage.removeItem("carrito")
 }
