@@ -1,0 +1,25 @@
+* {
+    font-family: 'Raleway', sans-serif;
+}
+.header {
+    background-color: yellow;
+    display: flex;
+    justify-content: center;
+}
+
+.header h1 {
+    font-style: bolder;
+}
+
+.loguin {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.divDos {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
