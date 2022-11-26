@@ -100,8 +100,7 @@ botonComprar.onclick = () => {
     botonAgregar.remove()
     selectProds.remove()
     botonComprar.remove()
-    divDos.innerHTML = `<h2>Compra Final:</h2>
-    <p>Total: ${precioTotal} dólares</p`
+    divDos.innerHTML = `<h2>Compra Final: Total: ${precioTotal} dólares </h2>`
 }
 localStorage.removeItem("carrito")
 }

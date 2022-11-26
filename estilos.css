@@ -1,5 +1,6 @@
 * {
     font-family: 'Raleway', sans-serif;
+    
 }
 .header {
     background-color: yellow;
@@ -23,3 +24,13 @@
     margin-top: 30px;
 }
 
+button {
+    background-color: black;
+    color: white;
+}
+
+.carrito {
+    margin-top: 70px;
+    display: flex;
+    justify-content: center;
+}
