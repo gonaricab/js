@@ -4,7 +4,8 @@ const boton = document.getElementById("boton")
 const loguin = document.getElementById("loguin")
 const bienvenido = document.getElementById("bienvenido")
 const divDos = document.getElementById("divDos")
-
+const divTres = document.getElementById("divTres")
+const enCarrito = document.getElementById("enCarrito")
 const carrito = []
 class Producto {
     constructor (id, producto, precio) {
@@ -50,22 +51,43 @@ productos.forEach((producto)=>{
 const botonAgregar = document.getElementById("agregar")
 const selectProds = document.getElementById("select")
 const botonComprar = document.getElementById("comprar")
+const ul = document.getElementById("ul")
+
 botonAgregar.onclick = () => {
     const indexProducto = selectProds.selectedIndex
     const productoSeleccionado = productos[indexProducto]
     carrito.push(productoSeleccionado)
     console.log(carrito)
     localStorage.setItem("carrito",JSON.stringify(carrito))
+    x = JSON.parse(localStorage.getItem("carrito"))
+    const listItem = document.createElement("li")
+    listItem.innerText = `${productoSeleccionado.producto}`
+    ul.append(listItem)
+    
 }
 
+
 botonComprar.onclick = () => {
-    const carritoValor = JSON.parse(localStorage.getItem("carrito"))
+  const carritoValor = JSON.parse(localStorage.getItem("carrito"))
+  if (carritoValor === null) {
+    alert("no tenes nada en el carrito")
+  }
+  else {
     carritoValor.forEach((element) => {
     precioTotal = precioTotal + element.precio  
     })
-    alert (precioTotal)
-    console.log(carritoValor)
+    botonAgregar.remove()
+    selectProds.remove()
+    botonComprar.remove()
+    divDos.innerHTML = `<h2>Compra Final:</h2>
+    <p>Total: ${precioTotal} dólares</p`
+    
 }
+localStorage.removeItem("carrito")
+}
+
+
+
 
 
 
