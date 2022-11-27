@@ -7,21 +7,21 @@
     display: flex;
     justify-content: center;
 }
-
-.header h1 {
-    font-style: bolder;
+.bienvenido {
+    display: flex;
+    justify-content: center;
 }
 
 .loguin {
     display: flex;
     justify-content: center;
-    margin-top: 20px;
+    margin-top: 50px;
 }
 
 .divDos {
     display: flex;
     justify-content: center;
-    margin-top: 30px;
+    margin-top: 70px;
 }
 
 button {
@@ -34,3 +34,4 @@ button {
     display: flex;
     justify-content: center;
 }
+
