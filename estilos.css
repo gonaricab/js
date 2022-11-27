@@ -1,13 +1,37 @@
-.titulo {
+* {
+    font-family: 'Raleway', sans-serif;
+    
+}
+.header {
     background-color: yellow;
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 100px;
+}
+.bienvenido {
+    display: flex;
+    justify-content: center;
 }
 
-.container {
+.loguin {
     display: flex;
-    justify-content: space-around;
-    
+    justify-content: center;
+    margin-top: 50px;
 }
+
+.divDos {
+    display: flex;
+    justify-content: center;
+    margin-top: 70px;
+}
+
+button {
+    background-color: black;
+    color: white;
+}
+
+.carrito {
+    margin-top: 70px;
+    display: flex;
+    justify-content: center;
+}
+
