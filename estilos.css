@@ -1,0 +1,9 @@
+.mostrarProductos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.cardProducto {
+    width: 200px;
+    margin: 5px ;
+} 
