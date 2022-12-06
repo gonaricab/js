@@ -100,17 +100,24 @@ else {carrito = []}
 
 botonesAgregar.forEach(boton => {
     boton.onclick = () =>{
+        const listaProductos = document.getElementById("listaProductos")
         const productoSeleccionado = productos.find(prod => prod.id === parseInt(boton.id))
         const productoCarrito = {...productoSeleccionado, cantidad:1}
         const indexCarrito = carrito.findIndex(prod=>prod.id === productoCarrito.id)
         if(indexCarrito=== -1) {
             carrito.push(productoCarrito)
+            const crearProducto = document.createElement ("li")
+            crearProducto.setAttribute("id", `${productoCarrito.id}`)
+            crearProducto.innerText = `Producto: ${productoCarrito.producto} - Cantidad: ${productoCarrito.cantidad}`
+            listaProductos.append(crearProducto)
         }
         else {
             carrito[indexCarrito].cantidad +=1
+           
         }
         localStorage.setItem("carrito", JSON.stringify(carrito))
         console.log(carrito)
+        
     }
 })
 const finalizar = document.getElementById("finaliarCompra")
@@ -122,7 +129,3 @@ finalizar.onclick = () =>{
     }) 
     console.log(totalCompra)
 }
-/* const goCarrito = document.getElementById("goCarrito")
-/* goCarrito.onclick = () => {
-    
-} */
