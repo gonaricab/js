@@ -7,7 +7,7 @@ const sinUsuario = document.getElementById("sinUsuario")
 const volverIngresar = document.getElementById("volverIngresar")
 const x = document.getElementById("productos")
 const usuario = JSON.parse(localStorage.getItem("usuario"))
-
+const divCarrito = document.getElementById("carrito")
 class Producto {
     constructor (id, producto, precio,imagen) {
         this.id = id
@@ -106,10 +106,7 @@ botonesAgregar.forEach(boton => {
         const indexCarrito = carrito.findIndex(prod=>prod.id === productoCarrito.id)
         if(indexCarrito=== -1) {
             carrito.push(productoCarrito)
-            const crearProducto = document.createElement ("li")
-            crearProducto.setAttribute("id", `${productoCarrito.id}`)
-            crearProducto.innerText = `Producto: ${productoCarrito.producto} - Cantidad: ${productoCarrito.cantidad}`
-            listaProductos.append(crearProducto)
+            
         }
         else {
             carrito[indexCarrito].cantidad +=1
@@ -117,10 +114,12 @@ botonesAgregar.forEach(boton => {
         }
         localStorage.setItem("carrito", JSON.stringify(carrito))
         console.log(carrito)
-        
+        actualizarCarrito()
     }
 })
+
 const finalizar = document.getElementById("finaliarCompra")
+
 finalizar.onclick = () =>{
     const valores = carrito.map(prod => prod.precio * prod.cantidad)
     let = totalCompra = 0
@@ -128,4 +127,16 @@ finalizar.onclick = () =>{
         totalCompra += valor
     }) 
     console.log(totalCompra)
+}
+
+function actualizarCarrito () {
+    let actualizar = ``
+    carrito.forEach ((producto) => {
+        actualizar += `
+        <h4>Producto:${producto.producto}</h4>
+        <p>Precio: $${producto.precio}</p>
+        <p>Cantidad: ${producto.cantidad}
+        `
+    })
+    divCarrito.innerHTML = actualizar
 }
