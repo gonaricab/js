@@ -86,7 +86,6 @@ const logOut = document.getElementById("logOut")
                 confirmButtonText: 'Cool'
               })
         }
-        
     }
 
 /* mostrar cards */
@@ -95,9 +94,10 @@ function crearCards () {
     productos.forEach (productox => {
         x.innerHTML +=  `
         <div id="${productox.id}" class="card cardProducto" style="width: 18rem;">
+        <img src="${productox.img}" class="card-img-top" alt="...">
         <div class="card-body">
         <h5 class="card-title">${productox.producto}</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        
         <button id="${productox.id}" class="btn btn-primary btn-dark">Agregar al carrito </button>
         </div>
         </div>`
@@ -127,6 +127,7 @@ function crearCards () {
     })
 }
 
+/* chequea si existen prodcutos en el carrito en el localStorage */
 
 const existeCarrito = JSON.parse(localStorage.getItem("carrito"))
 let carrito 
@@ -136,9 +137,8 @@ if(existeCarrito) {
 }
 else {carrito = []}
 
-
+/* finalizar compra */
 const finalizar = document.getElementById("finaliarCompra")
-
 finalizar.onclick = () =>{
     const valores = carrito.map(prod => prod.precio * prod.cantidad)
     let = totalCompra = 0
@@ -148,6 +148,7 @@ finalizar.onclick = () =>{
     console.log(totalCompra)
 }
 
+/* pone en pantalla los productos del carrito */
 function actualizarCarrito () {
     let actualizar = ``
     carrito.forEach ((producto) => {
@@ -155,7 +156,26 @@ function actualizarCarrito () {
         <h6>Producto: ${producto.producto}</h6>
         <p>Precio: $${producto.precio}</p>
         <p>Cantidad: ${producto.cantidad}
+        <button onclick = eliminarDelCarrito("${producto.id}") class="btn btn-dark">Eliminar</button>
         `
     })
     divCarrito.innerHTML = actualizar
+}
+
+/* vaciar Carrito */
+
+const vaciarCarrito = document.getElementById("vaciarCarrito")
+vaciarCarrito.onclick = () => {
+    carrito.splice(0, carrito.length)
+    localStorage.removeItem("carrito")
+    actualizarCarrito()
+    
+}
+
+/* eliminar del carrito */
+
+const eliminarDelCarrito = (id) => {
+    const producto = carrito.find((producto) => producto.id === id)
+    carrito.splice(carrito.indexOf(producto)), 1
+    actualizarCarrito()
 }
