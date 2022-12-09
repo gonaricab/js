@@ -55,9 +55,9 @@ botonIngresar.onclick = () => {
 else {
     Swal.fire({
         title: 'Error!',
-        text: 'Do you want to continue',
+        text: 'No ingresaste nombre o apellido',
         icon: 'error',
-        confirmButtonText: 'Cool'
+        confirmButtonText: 'Ok'
       })
 }
 }
@@ -97,7 +97,7 @@ function crearCards () {
         <img src="${productox.img}" class="card-img-top" alt="...">
         <div class="card-body">
         <h5 class="card-title">${productox.producto}</h5>
-        
+        <p>Precio: $ ${productox.precio} </p>
         <button id="${productox.id}" class="btn btn-primary btn-dark">Agregar al carrito </button>
         </div>
         </div>`
@@ -176,6 +176,8 @@ vaciarCarrito.onclick = () => {
 
 const eliminarDelCarrito = (id) => {
     const producto = carrito.find((producto) => producto.id === id)
-    carrito.splice(carrito.indexOf(producto)), 1
+    carrito.splice(carrito.indexOf(producto), 1)
+    const remItem = carrito.indexOf(producto)
+    localStorage.removeItem ("carrito", `${remItem}`)
     actualizarCarrito()
 }
