@@ -20,21 +20,6 @@ class Producto {
     }
 }
 
-/* const iphone = new Producto (0, "Apple iPhone 14 Pro Max (1 TB) - Morado oscuro", 500)
-
-const tv = new Producto (1, "Smart TV Samsung Series 7 4K 50", 300)
-
-const ipad = new Producto (2, "Apple iPad Air de 10.9 WI-FI 64GB Gris espacia", 800)
-
-const pc = new Producto (3, "Pc Armada Intel Core I5 8gb Ssd240 W10 Office", 1000)
-
-const reloj = new Producto (4, "Apple Watch Series 3 (GPS) - Correa deportiva negro", 200)
-
-const monitor = new Producto (5, "Monitor Led Samsung 24'' Con Diseño Sin Bordes ", 210)
-
-const productos = [iphone,tv,ipad,pc, reloj, monitor]
- */
-
 /* función para consulta JSON */
 
 const productos = []
@@ -50,11 +35,9 @@ async function getProductos () {
     crearCards ()
 }
 
-
 getProductos ()
-
-
 console.log (productos)
+
 /* se fija si hay usuario en localStorage */
 if(usuario) {
     mostrarBienvenida(usuario)
@@ -107,6 +90,7 @@ const logOut = document.getElementById("logOut")
     }
 
 /* mostrar cards */
+
 function crearCards () {
     productos.forEach (productox => {
         x.innerHTML +=  `
@@ -114,12 +98,14 @@ function crearCards () {
         <div class="card-body">
         <h5 class="card-title">${productox.producto}</h5>
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <button id="${productox.id}" class="btn btn-primary">Agregar al carrito </button>
+        <button id="${productox.id}" class="btn btn-primary btn-dark">Agregar al carrito </button>
         </div>
         </div>`
        
     })
+
     const botonesAgregar = document.querySelectorAll(".btn-primary")
+
     botonesAgregar.forEach(boton => {
         boton.onclick = () =>{
             const listaProductos = document.getElementById("listaProductos")
