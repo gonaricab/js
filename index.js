@@ -57,7 +57,7 @@ else {
         title: 'Error!',
         text: 'No ingresaste nombre o apellido',
         icon: 'error',
-        confirmButtonText: 'Ok'
+        confirmButtonText: 'OK'
       })
 }
 }
@@ -81,9 +81,9 @@ const logOut = document.getElementById("logOut")
         else {
             Swal.fire({
                 title: 'Error!',
-                text: 'Do you want to continue',
+                text: 'No estás logueado',
                 icon: 'error',
-                confirmButtonText: 'Cool'
+                confirmButtonText: 'OK'
               })
         }
     }
@@ -114,10 +114,21 @@ function crearCards () {
             const indexCarrito = carrito.findIndex(prod=>prod.id === productoCarrito.id)
             if(indexCarrito=== -1) {
                 carrito.push(productoCarrito)
-                
+                Swal.fire({
+                    title: 'Agregaste el siguiente producto:',
+                    text: ` ${productoCarrito.producto}`,
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                })
             }
             else {
                 carrito[indexCarrito].cantidad +=1
+                Swal.fire({
+                    title: 'Agregaste el siguiente producto:',
+                    text: ` ${productoCarrito.producto}`,
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                })
                
             }
             localStorage.setItem("carrito", JSON.stringify(carrito))
@@ -144,8 +155,14 @@ finalizar.onclick = () =>{
     let = totalCompra = 0
     valores.forEach(valor => {
         totalCompra += valor
+        Swal.fire({
+            title: 'Finalizaste la compra',
+            text: `Total de la compra: ${totalCompra}`,
+            icon: 'success',
+            confirmButtonText: 'OK'
+        })
     }) 
-    console.log(totalCompra)
+    
 }
 
 /* pone en pantalla los productos del carrito */
@@ -172,7 +189,7 @@ vaciarCarrito.onclick = () => {
     
 }
 
-/* eliminar del carrito */
+/* eliminar del carrito y del localStorage en elemento en cuestión*/
 
 const eliminarDelCarrito = (id) => {
     const producto = carrito.find((producto) => producto.id === id)

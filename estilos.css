@@ -1,3 +1,11 @@
+.header {
+    background-color: black;
+    display: flex;
+    justify-content: center;
+}
+.header h1 {
+    color: yellow;
+}
 .mostrarProductos {
     display: flex;
     align-items: center;
