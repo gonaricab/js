@@ -108,7 +108,6 @@ function crearCards () {
 
     botonesAgregar.forEach(boton => {
         boton.onclick = () =>{
-            const listaProductos = document.getElementById("listaProductos")
             const productoSeleccionado = productos.find(prod => prod.id === parseInt(boton.id))
             const productoCarrito = {...productoSeleccionado, cantidad:1}
             const indexCarrito = carrito.findIndex(prod=>prod.id === productoCarrito.id)
@@ -189,7 +188,7 @@ vaciarCarrito.onclick = () => {
     
 }
 
-/* eliminar del carrito y del localStorage en elemento en cuestión*/
+/* eliminar del carrito y del localStorage el elemento en cuestión */
 
 const eliminarDelCarrito = (id) => {
     const producto = carrito.find((producto) => producto.id === id)

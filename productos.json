@@ -1,37 +1,37 @@
 [
     {
         "id": 0,
-        "img": "./imagenes/iphone.webp",
+        "img": "./imagenes/iphone.jpg",
         "producto":"Apple iPhone 14 Pro Max (1 TB) - Morado oscuro",
         "precio": 500
     },
     {
         "id": 1,
-        "img":"./imagenes/tv.webp",
+        "img":"./imagenes/tv.png",
         "producto":"Smart TV Samsung Series 7 4K 50''",
         "precio": 300
     },
     {
         "id": 2,
-        "img":"./imagenes/ipad.webp",
+        "img":"./imagenes/ipad.jpg",
         "producto": "Apple iPad Air de 10.9 WI-FI 64GB Gris espacia.",
         "precio": 800
     },
     {
         "id": 3,
-        "img":"./imagenes/pc.webp",
+        "img":"./imagenes/pc.jpg",
         "producto": "Pc Armada Intel Core I5 8gb Ssd240 W10 Office",
         "precio": 1000
     },
     {
         "id": 4,
-        "img": "./imagenes/watch.webp",
+        "img": "./imagenes/watch.jpg",
         "producto":"Apple Watch Series 3 (GPS) - Correa deportiva negro",
         "precio": 200
     },
     {
         "id": 5,
-        "img": "./imagenes/monitor.webp",
+        "img": "./imagenes/monitor.jpg",
         "producto": "Monitor Led Samsung 24'' Con Diseño Sin Bordes",
         "precio": 200
     }
