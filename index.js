@@ -172,7 +172,7 @@ function actualizarCarrito () {
         <h6>Producto: ${producto.producto}</h6>
         <p>Precio: $${producto.precio}</p>
         <p>Cantidad: ${producto.cantidad}
-        <button onclick = eliminarDelCarrito("${producto.id}") class="btn btn-dark">Eliminar</button>
+        <button onclick = eliminarDelCarrito(${producto.id}) class="btn btn-dark">Eliminar</button>
         `
     })
     divCarrito.innerHTML = actualizar
@@ -197,3 +197,9 @@ const eliminarDelCarrito = (id) => {
     localStorage.removeItem ("carrito", `${remItem}`)
     actualizarCarrito()
 }
+
+
+/* const eliminarDelCarrito = (id) => {
+    indexProducto = carrito.findIndex((obj) => obj.id === id)
+    console.log(indexProducto)
+} */
