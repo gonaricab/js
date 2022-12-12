@@ -111,7 +111,7 @@ function crearCards () {
             const productoSeleccionado = productos.find(prod => prod.id === parseInt(boton.id))
             const productoCarrito = {...productoSeleccionado, cantidad:1}
             const indexCarrito = carrito.findIndex(prod=>prod.id === productoCarrito.id)
-            if(indexCarrito=== -1) {
+            if(indexCarrito === -1) {
                 carrito.push(productoCarrito)
                 Swal.fire({
                     title: 'Agregaste el siguiente producto:',
@@ -190,16 +190,46 @@ vaciarCarrito.onclick = () => {
 
 /* eliminar del carrito y del localStorage el elemento en cuestión */
 
-const eliminarDelCarrito = (id) => {
+/* const eliminarDelCarrito = (id) => {
     const producto = carrito.find((producto) => producto.id === id)
     carrito.splice(carrito.indexOf(producto), 1)
     const remItem = carrito.indexOf(producto)
     localStorage.removeItem ("carrito", `${remItem}`)
     actualizarCarrito()
 }
-
+ */
 
 /* const eliminarDelCarrito = (id) => {
     indexProducto = carrito.findIndex((obj) => obj.id === id)
-    console.log(indexProducto)
+    let cantidadProducto = carrito[indexProducto].cantidad
+    console.log(cantidadProducto)
+    if(cantidadProducto > 1) {
+        cantidadProducto--
+        carrito[indexProducto].cantidad = cantidadProducto
+        actualizarCarrito()
+        console.log(carrito)
+        localStorage.setItem("carrito",JSON.stringify(carrito))
+    }
+    else if(cantidadProducto == 0) {
+       carrito.splice(indexProducto, 1)
+       localStorage.setItem("carrito",JSON.stringify(carrito) )
+    }
 } */
+
+const eliminarDelCarrito = (id) => {
+    indexProducto = carrito.findIndex((obj) => obj.id === id)
+    let cantidadProducto = carrito[indexProducto].cantidad
+    console.log(cantidadProducto)
+    if(cantidadProducto === 1) {
+        carrito.splice(indexProducto, 1)
+        localStorage.setItem("carrito",JSON.stringify(carrito) )
+        actualizarCarrito()
+    }
+    else {
+        cantidadProducto--
+        carrito[indexProducto].cantidad = cantidadProducto
+        console.log(carrito)
+        localStorage.setItem("carrito",JSON.stringify(carrito))
+        actualizarCarrito()
+    }
+}
