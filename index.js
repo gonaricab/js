@@ -36,7 +36,7 @@ async function getProductos () {
 }
 
 getProductos ()
-console.log (productos)
+
 
 /* se fija si hay usuario en localStorage */
 if(usuario) {
@@ -131,7 +131,6 @@ function crearCards () {
                
             }
             localStorage.setItem("carrito", JSON.stringify(carrito))
-            console.log(carrito)
             actualizarCarrito()
         }
     })
@@ -156,7 +155,7 @@ finalizar.onclick = () =>{
 
         Swal.fire({
             title: 'No hay productos en el Carrito',
-            text: `Empieza a comprar!`,
+            text: `Keep it up with consumerism!`,
             icon: 'error',
             confirmButtonText: 'OK'
         })
@@ -168,7 +167,7 @@ finalizar.onclick = () =>{
             totalCompra += valor
             Swal.fire({
                 title: 'Finalizaste la compra',
-                text: `Total de la compra: ${totalCompra}`,
+                text: `Total de la compra: $${totalCompra}`,
                 icon: 'success',
                 confirmButtonText: 'OK'
             })
@@ -206,10 +205,19 @@ function actualizarCarrito () {
 
 const vaciarCarrito = document.getElementById("vaciarCarrito")
 vaciarCarrito.onclick = () => {
-    carrito.splice(0, carrito.length)
-    localStorage.removeItem("carrito")
-    actualizarCarrito()
-    
+    if(carrito.length === 0) {
+        Swal.fire({
+            title: 'No hay productos en el Carrito',
+            text: `Agrega productos!`,
+            icon: 'error',
+            confirmButtonText: 'OK'
+        })
+    }
+    else {
+        carrito.splice(0, carrito.length)
+        localStorage.removeItem("carrito")
+        actualizarCarrito()
+    } 
 }
 
 /* eliminar del carrito y del localStorage el elemento en cuestión */
@@ -217,7 +225,6 @@ vaciarCarrito.onclick = () => {
 const eliminarDelCarrito = (id) => {
     indexProducto = carrito.findIndex((obj) => obj.id === id)
     let cantidadProducto = carrito[indexProducto].cantidad
-    console.log(cantidadProducto)
     if(cantidadProducto === 1) {
         carrito.splice(indexProducto, 1)
         localStorage.setItem("carrito",JSON.stringify(carrito) )
@@ -226,7 +233,6 @@ const eliminarDelCarrito = (id) => {
     else {
         cantidadProducto--
         carrito[indexProducto].cantidad = cantidadProducto
-        console.log(carrito)
         localStorage.setItem("carrito",JSON.stringify(carrito))
         actualizarCarrito()
     }
