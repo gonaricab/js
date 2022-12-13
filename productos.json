@@ -34,5 +34,17 @@
         "img": "./imagenes/monitor.jpg",
         "producto": "Monitor Led Samsung 24'' Con Diseño Sin Bordes",
         "precio": 200
+    },
+    {
+        "id": 6,
+        "img": "./imagenes/ps4.png",
+        "producto": "Playstation 4 500 GB",
+        "precio": 1000
+    },
+    {
+        "id": 7,
+        "img": "./imagenes/xbox.jpg",
+        "producto":"Microsoft Xbox One 1TB Standard Color Blanco",
+        "precio": 1050
     }
 ]
