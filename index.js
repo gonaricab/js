@@ -164,6 +164,7 @@ finalizar.onclick = () =>{
     
 } */ 
 const finalizar = document.getElementById("finaliarCompra")
+
 finalizar.onclick = () =>{
     if(carrito.length === 0) {
 
@@ -186,6 +187,8 @@ finalizar.onclick = () =>{
                 confirmButtonText: 'OK'
             })
         }) 
+        localStorage.removeItem("carrito")
+        
     }
    
 }
@@ -196,10 +199,17 @@ function actualizarCarrito () {
     let actualizar = ``
     carrito.forEach ((producto) => {
         actualizar += `
+        <div class="inCarrito"> 
+        <div>
+        <img class="imagenCarrito" src="${producto.img}">
+        </div>
+        <div class="description">
         <h6>Producto: ${producto.producto}</h6>
         <p>Precio: $${producto.precio}</p>
         <p>Cantidad: ${producto.cantidad}
         <button onclick = eliminarDelCarrito(${producto.id}) class="btn btn-dark">Eliminar</button>
+        </div>
+        </div>
         `
     })
     divCarrito.innerHTML = actualizar
