@@ -147,8 +147,8 @@ if(existeCarrito) {
 }
 else {carrito = []}
 
-/* finalizar compra */
-const finalizar = document.getElementById("finaliarCompra")
+/* /* finalizar compra */
+/* const finalizar = document.getElementById("finaliarCompra")
 finalizar.onclick = () =>{
     const valores = carrito.map(prod => prod.precio * prod.cantidad)
     let = totalCompra = 0
@@ -162,7 +162,34 @@ finalizar.onclick = () =>{
         })
     }) 
     
+} */ 
+const finalizar = document.getElementById("finaliarCompra")
+finalizar.onclick = () =>{
+    if(carrito.length === 0) {
+
+        Swal.fire({
+            title: 'No hay productos en el Carrito',
+            text: `Empieza a comprar!`,
+            icon: 'error',
+            confirmButtonText: 'OK'
+        })
+    }
+    else {
+        const valores = carrito.map(prod => prod.precio * prod.cantidad)
+        let = totalCompra = 0
+        valores.forEach(valor => {
+            totalCompra += valor
+            Swal.fire({
+                title: 'Finalizaste la compra',
+                text: `Total de la compra: ${totalCompra}`,
+                icon: 'success',
+                confirmButtonText: 'OK'
+            })
+        }) 
+    }
+   
 }
+
 
 /* pone en pantalla los productos del carrito */
 function actualizarCarrito () {
@@ -189,32 +216,6 @@ vaciarCarrito.onclick = () => {
 }
 
 /* eliminar del carrito y del localStorage el elemento en cuestión */
-
-/* const eliminarDelCarrito = (id) => {
-    const producto = carrito.find((producto) => producto.id === id)
-    carrito.splice(carrito.indexOf(producto), 1)
-    const remItem = carrito.indexOf(producto)
-    localStorage.removeItem ("carrito", `${remItem}`)
-    actualizarCarrito()
-}
- */
-
-/* const eliminarDelCarrito = (id) => {
-    indexProducto = carrito.findIndex((obj) => obj.id === id)
-    let cantidadProducto = carrito[indexProducto].cantidad
-    console.log(cantidadProducto)
-    if(cantidadProducto > 1) {
-        cantidadProducto--
-        carrito[indexProducto].cantidad = cantidadProducto
-        actualizarCarrito()
-        console.log(carrito)
-        localStorage.setItem("carrito",JSON.stringify(carrito))
-    }
-    else if(cantidadProducto == 0) {
-       carrito.splice(indexProducto, 1)
-       localStorage.setItem("carrito",JSON.stringify(carrito) )
-    }
-} */
 
 const eliminarDelCarrito = (id) => {
     indexProducto = carrito.findIndex((obj) => obj.id === id)
