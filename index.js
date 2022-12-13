@@ -147,22 +147,8 @@ if(existeCarrito) {
 }
 else {carrito = []}
 
-/* /* finalizar compra */
-/* const finalizar = document.getElementById("finaliarCompra")
-finalizar.onclick = () =>{
-    const valores = carrito.map(prod => prod.precio * prod.cantidad)
-    let = totalCompra = 0
-    valores.forEach(valor => {
-        totalCompra += valor
-        Swal.fire({
-            title: 'Finalizaste la compra',
-            text: `Total de la compra: ${totalCompra}`,
-            icon: 'success',
-            confirmButtonText: 'OK'
-        })
-    }) 
-    
-} */ 
+/* finalizar compra */
+
 const finalizar = document.getElementById("finaliarCompra")
 
 finalizar.onclick = () =>{
@@ -188,13 +174,14 @@ finalizar.onclick = () =>{
             })
         }) 
         localStorage.removeItem("carrito")
-        
+        carrito.length = 0
+        divCarrito.innerHTML = ``
     }
    
 }
 
-
 /* pone en pantalla los productos del carrito */
+
 function actualizarCarrito () {
     let actualizar = ``
     carrito.forEach ((producto) => {
